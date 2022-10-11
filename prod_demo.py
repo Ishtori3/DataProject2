@@ -13,7 +13,7 @@ st.set_page_config(page_title='Pyc énergétique', layout='wide')
 st.title("Pyc énergétique")
 
 df=pd.read_csv("https://odre.opendatasoft.com/explore/dataset/eco2mix-national-tr/download/?format=csv&timezone=Europe/Berlin&lang=en&use_labels_for_header=true&csv_separator=%3B", sep=";")
-df=df.drop(columns=["TCO Thermique (%)", "TCH Thermique (%)", "TCO Nucléaire (%)","TCH Nucléaire (%)","TCO Eolien (%)","TCH Eolien (%)","TCO Solaire (%)","TCH Solaire (%)","TCO Hydraulique (%)","TCH Hydraulique (%)","TCO Bioénergies (%)","TCH Bioénergies (%)",] )
+df=df.drop(columns=["TCO Thermique (%)", "TCH Thermique (%)", "TCO Nucléaire (%)","TCH Nucléaire (%)","TCO Eolien (%)","TCH Eolien (%)","TCO Solaire (%)","TCH Solaire (%)","TCO Hydraulique (%)","TCH Hydraulique (%)","TCO Bioénergies (%)","TCH Bioénergies (%)"] )
 df=df.dropna(axis=0, subset=["Consommation (MW)"])
 df=df.rename(columns = {'Consommation (MW)':'Consommation','Thermique (MW)': 'Thermique', 'Nucléaire (MW)': 'Nucléaire','Eolien (MW)':'Eolien', 'Solaire (MW)':'Solaire', 'Hydraulique (MW)':'Hydraulique', 'Pompage (MW)':'Pompage', 'Bioénergies (MW)':'Bioénergies', 'Ech. physiques (MW)':'Ech. physiques' })
 df_sum=df.groupby(["Date","Heure"], as_index=False).agg({'Eolien' : "sum",'Hydraulique' : "sum", 'Nucléaire': "sum", 'Pompage' : "sum", 'Solaire':"sum", 'Thermique' : "sum",'Bioénergies':"sum"})
