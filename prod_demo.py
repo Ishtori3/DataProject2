@@ -18,7 +18,7 @@ df.Heure=pd.to_datetime(df.Heure.apply(lambda x: x[-8:]))
 df=df.set_index("Date")
 
 st.write("On propose de représenter la production électrique en France par type d'énergie. Les données s'étendent des années 2013 à 2021.")
-st.write("En déplaçant le cursus Temporalité, on pourra représenter les données sur une année, un mois ou une journée.")
+st.write("En déplaçant le curseur Temporalité, on pourra représenter les données sur une année, un mois ou une journée.")
 
 def graph():
     
